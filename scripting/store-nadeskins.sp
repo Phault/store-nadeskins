@@ -9,7 +9,7 @@
 enum Skin
 {
 	String:SkinName[STORE_MAX_NAME_LENGTH],
-	String:SkinModelPath[PLATFORM_MAX_PATH],
+	String:SkinModelPath[PLATFORM_MAX_PATH]
 }
 
 new OFFSET_THROWER;

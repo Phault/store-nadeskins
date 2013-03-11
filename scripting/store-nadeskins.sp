@@ -5,6 +5,7 @@
 #include <sdkhooks>
 #include <store>
 #include <smjansson>
+#include <smartdm>
 
 enum Skin
 {
@@ -66,7 +67,7 @@ public OnMapStart()
 		if (strcmp(g_skins[skin][SkinModelPath], "") != 0 && (FileExists(g_skins[skin][SkinModelPath]) || FileExists(g_skins[skin][SkinModelPath], true)))
 		{
 			PrecacheModel(g_skins[skin][SkinModelPath]);
-			AddFileToDownloadsTable(g_skins[skin][SkinModelPath]);
+			Downloader_AddFileToDownloadsTable(g_skins[skin][SkinModelPath]);
 		}
 	}
 }
@@ -101,7 +102,7 @@ public LoadItem(const String:itemName[], const String:attrs[])
 	if (strcmp(g_skins[g_skinCount][SkinModelPath], "") != 0 && (FileExists(g_skins[g_skinCount][SkinModelPath]) || FileExists(g_skins[g_skinCount][SkinModelPath], true)))
 	{
 		PrecacheModel(g_skins[g_skinCount][SkinModelPath]);
-		AddFileToDownloadsTable(g_skins[g_skinCount][SkinModelPath]);
+		Downloader_AddFileToDownloadsTable(g_skins[g_skinCount][SkinModelPath]);
 	}
 	
 	g_skinCount++;

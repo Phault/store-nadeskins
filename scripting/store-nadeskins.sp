@@ -163,15 +163,18 @@ public Event_OnNadeSpawn(entity)
 
 public Action:nadetimer(Handle:timer, any:entity)
 {
-	new owner = GetEntDataEnt2(entity, OFFSET_THROWER);
-     
-	if(0 < owner <= MaxClients && IsClientInGame(owner)) // Valid client index 
-    {
-    	new Handle:pack = CreateDataPack();
-    	WritePackCell(pack, owner);
-    	WritePackCell(pack, entity);
-        Store_GetEquippedItemsByType(Store_GetClientAccountID(owner), "nadeskins", Store_GetClientLoadout(owner), OnGetPlayerNadeSkin, pack);
-    } 
+	if (IsValidEntity(entity))
+	{
+		new owner = GetEntDataEnt2(entity, OFFSET_THROWER);
+	     
+		if(0 < owner <= MaxClients && IsClientInGame(owner)) // Valid client index 
+	    {
+	    	new Handle:pack = CreateDataPack();
+	    	WritePackCell(pack, owner);
+	    	WritePackCell(pack, entity);
+	        Store_GetEquippedItemsByType(Store_GetClientAccountID(owner), "nadeskins", Store_GetClientLoadout(owner), OnGetPlayerNadeSkin, pack);
+	    } 
+	}
 	return Plugin_Stop;
 }
 
